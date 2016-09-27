@@ -163,7 +163,7 @@ bool ReadMap::readPosi() {
 	vector<string> data;
 	int staIndex;
 	int i = 0;
-	for (; getline(posiFile, str);) {
+	for (; getline(posiFile, str);i++) {
 		data = split(str," ");
 		staIndex = getStationIndex(data[0]);
 		if (staIndex == -1) {
@@ -174,6 +174,12 @@ bool ReadMap::readPosi() {
 			stationQueen[staIndex].y = atoi(data[2].c_str());
 		}
 	}
+	//cout << i << endl;
+	/*for (i = 0; i < stationQueen.size(); i++) {
+		if (stationQueen[i].x == 0 && stationQueen[i].y == 0) {
+			cout << stationQueen[i].name << endl;
+		}
+	}*/
 
 	return true;
 }

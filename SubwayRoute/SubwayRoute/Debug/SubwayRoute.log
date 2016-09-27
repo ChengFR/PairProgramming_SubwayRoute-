@@ -1,6 +1,6 @@
-﻿  ReadMap.cpp
-  Main.cpp
-g:\软工\结对项目\code\subwayroute\subwayroute\main.cpp(118): warning C4018: “<”: 有符号/无符号不匹配
-  正在生成代码...
+﻿  Main.cpp
+g:\软工\结对项目\code\subwayroute\subwayroute\main.cpp(182): warning C4018: “<”: 有符号/无符号不匹配
+g:\软工\结对项目\code\subwayroute\subwayroute\main.cpp(233): warning C4018: “<”: 有符号/无符号不匹配
+g:\软工\结对项目\code\subwayroute\subwayroute\main.cpp(351): warning C4018: “<”: 有符号/无符号不匹配
   SubwayRoute.vcxproj -> G:\软工\结对项目\code\SubwayRoute\Debug\SubwayRoute.exe
   SubwayRoute.vcxproj -> G:\软工\结对项目\code\SubwayRoute\Debug\SubwayRoute.pdb (Full PDB)

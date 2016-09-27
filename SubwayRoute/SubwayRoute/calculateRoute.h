@@ -19,7 +19,7 @@ public:
 	//求站点最少的最短路径
 	vector<string> getMinStaRoute(string beginSta, string endSta);
 	//为最短路径添加换乘信息
-	vector<string> addTransferInf(vector<string> route);
+	vector<vector<string>> addTransferInf(vector<string> route);
 
 	//求所有最少换乘的路径
 	vector<vector<string>> getAllMinTraRoute(string beginSta, string endSta);
