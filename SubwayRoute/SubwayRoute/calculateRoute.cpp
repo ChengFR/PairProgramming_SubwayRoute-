@@ -285,8 +285,10 @@ int calculateRoute::getTranfTime(vector<string> route) {
 输出：正序修改后的路线vector<string>
 功能：将路线转正并加换乘信息
 */
-vector<string> calculateRoute::addTransferInf(vector<string> route) {
-	vector<string> newRoute;
+vector<vector<string>> calculateRoute::addTransferInf(vector<string> route) {
+	vector<string> newRoute1;//无换乘信息
+	vector<string> newRoute2;
+	vector<vector<string>> Route;
 	int i = 0, j = 0;
 	vector<string>::iterator it; //迭代器，是个指针
 	string temp = "";
@@ -295,15 +297,16 @@ vector<string> calculateRoute::addTransferInf(vector<string> route) {
 	station nextStation;
 	station lastStation;
 	for (i = route.size() - 1; i >= 0; i--) {
-		newRoute.push_back(route.at(i));
+		newRoute1.push_back(route.at(i));
+		newRoute2.push_back(route.at(i));
 	}
 	//先求出当前路线名
-	nowStation = rm.getStation(newRoute.at(0));
+	nowStation = rm.getStation(newRoute2.at(0));
 	if (nowStation.routeNumber == 1) {
 		nowRouteName = nowStation.routes.at(0);
 	}
 	else {
-		nextStation = rm.getStation(newRoute.at(1));
+		nextStation = rm.getStation(newRoute2.at(1));
 		if (nextStation.routeNumber == 1) {
 			nowRouteName = nextStation.routes.at(0);
 		}
@@ -311,8 +314,8 @@ vector<string> calculateRoute::addTransferInf(vector<string> route) {
 			nowRouteName = getSameRoute(nowStation.routes, nextStation.routes);
 		}
 	}
-	it = newRoute.begin();
-	for (it++, i = 1; it != newRoute.end(); it++, i++) {
+	it = newRoute2.begin();
+	for (it++, i = 1; it != newRoute2.end(); it++, i++) {
 		nowStation = rm.getStation(*it);
 		//当前站点并不在之前的线路上
 		if (!rm.ifContain_2(nowStation.routes, nowRouteName)) {
@@ -320,7 +323,7 @@ vector<string> calculateRoute::addTransferInf(vector<string> route) {
 				nowRouteName = nowStation.routes.at(0);
 			}
 			else {
-				lastStation = rm.getStation(newRoute.at(i - 1));
+				lastStation = rm.getStation(newRoute2.at(i - 1));
 				if (lastStation.routeNumber == 1) {
 					nowRouteName = nextStation.routes.at(0);
 				}
@@ -329,15 +332,21 @@ vector<string> calculateRoute::addTransferInf(vector<string> route) {
 				}
 			}
 
-			temp = newRoute.at(i - 1) + "换乘" + nowRouteName;
-			newRoute.erase(it - 1);
+			temp = newRoute2.at(i - 1) + "换乘" + nowRouteName;
+			newRoute2.erase(it - 1);
 			//对newRoute进行修改后迭代器失效
-			newRoute.insert(newRoute.begin() + i - 1, temp);
-			it = newRoute.begin() + i;
+			newRoute2.insert(newRoute2.begin() + i - 1, temp);
+			it = newRoute2.begin() + i;
 		}
 	}
-
-	return newRoute;
+	cout << newRoute2.size() << endl;
+	int route_size = newRoute2.size();
+	for (i = 0; i < route_size; i++) {
+		cout << newRoute2.at(i) << endl;
+	}
+	Route.push_back(newRoute1);
+	Route.push_back(newRoute2);
+	return Route;
 }
 
 /*输入：两个station的route集合

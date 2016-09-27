@@ -147,12 +147,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="calculateRoute.h" />
-    <ClInclude Include="GUI.h" />
     <ClInclude Include="ReadMap.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="calculateRoute.cpp" />
-    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ReadMap.cpp" />
   </ItemGroup>

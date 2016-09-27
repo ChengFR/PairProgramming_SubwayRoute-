@@ -21,9 +21,6 @@
     <ClInclude Include="calculateRoute.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="GUI.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ReadMap.cpp">
@@ -33,9 +30,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
