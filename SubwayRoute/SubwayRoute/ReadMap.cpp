@@ -1,5 +1,18 @@
 #include "ReadMap.h"
 
+void ReadMap::init() {
+	cout << "read map ..." << endl;
+	if (!readFile()) {
+		cout << "map is wrong !" << endl;
+	}
+	if (!setInf()) {
+		cout << "map is wrong !" << endl;
+	}
+	if (!readPosi()) {
+		cout << "map is wrong !" << endl;
+	}
+	cout << "finished" << endl;
+}
 bool ReadMap::readFile() {
 	ifstream mapFile("beijing_subway.txt");
 	int routeOrder = 0;
@@ -73,7 +86,7 @@ bool ReadMap::setInf() {
 	return true;
 }
 
-bool ReadMap::printRoute(string name) {
+bool ReadMap::printRoute(string &name) {
 	int i = 0, j = 0;
 	for (i = 0; i<18; i++) {
 		if (r[i].routeName == name) {
@@ -87,7 +100,7 @@ bool ReadMap::printRoute(string name) {
 	return false;
 }
 
-int ReadMap::ifContain_1(vector<station> queen, string data) {
+int ReadMap::ifContain_1(vector<station> &queen, string &data) {
 	int i = 0;
 	int queen_size;
 	queen_size = queen.size();
@@ -102,7 +115,7 @@ int ReadMap::ifContain_1(vector<station> queen, string data) {
 	return -1;
 }
 
-bool ReadMap::ifContain_2(vector<string> queen, string data) {
+bool ReadMap::ifContain_2(vector<string> &queen, string &data) {
 	int i = 0;
 	int queen_size;
 	queen_size = queen.size();
@@ -117,7 +130,7 @@ bool ReadMap::ifContain_2(vector<string> queen, string data) {
 	return false;
 }
 
-station ReadMap::getStation(string name) {
+station ReadMap::getStation(string &name) {
 	int i = 0;
 	int stationQueen_size = stationQueen.size();
 	for (i = 0; i < stationQueen_size; i++) {
@@ -132,7 +145,7 @@ station ReadMap::getStation(string name) {
 	return stationQueen.at(i);
 }
 
-route ReadMap::getRoute(string routeName) {
+route ReadMap::getRoute(string &routeName) {
 	int i = 0;
 	for (i = 0; i < 18; i++) {
 		if (r[i].routeName == routeName) {
@@ -142,7 +155,7 @@ route ReadMap::getRoute(string routeName) {
 	return r[i];
 }
 
-int ReadMap::getStationIndex(string name) {
+int ReadMap::getStationIndex(string &name) {
 	int i = 0;
 	int stationQueen_size = stationQueen.size();
 	for (i = 0; i < stationQueen_size; i++) {
@@ -175,11 +188,11 @@ bool ReadMap::readPosi() {
 		}
 	}
 	//cout << i << endl;
-	for (i = 0; i < stationQueen.size(); i++) {
+	/*for (i = 0; i < stationQueen.size(); i++) {
 		if (stationQueen[i].x == 0 && stationQueen[i].y == 0) {
 			cout << stationQueen[i].name << endl;
 		}
-	}
+	}*/
 
 	return true;
 }

@@ -1,4 +1,12 @@
 ﻿  ReadMap.cpp
-e:\pairprogramming_subwayroute-\subwayroute\subwayroute\readmap.cpp(178): warning C4018: '<': signed/unsigned mismatch
-  SubwayRoute.vcxproj -> E:\PairProgramming_SubwayRoute-\SubwayRoute\Debug\SubwayRoute.exe
-  SubwayRoute.vcxproj -> E:\PairProgramming_SubwayRoute-\SubwayRoute\Debug\SubwayRoute.pdb (Full PDB)
+  正在生成代码...
+  正在编译...
+  subwayNet.cpp
+g:\软工\结对项目\pairprogramming_subwayroute--master\subwayroute\subwayroute\subwaynet.cpp(15): warning C4018: “<”: 有符号/无符号不匹配
+  calculateRoute.cpp
+  Main.cpp
+g:\软工\结对项目\pairprogramming_subwayroute--master\subwayroute\subwayroute\main.cpp(125): warning C4018: “<”: 有符号/无符号不匹配
+g:\软工\结对项目\pairprogramming_subwayroute--master\subwayroute\subwayroute\main.cpp(242): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...
+  SubwayRoute.vcxproj -> G:\软工\结对项目\PairProgramming_SubwayRoute--master\SubwayRoute\Debug\SubwayRoute.exe
+  SubwayRoute.vcxproj -> G:\软工\结对项目\PairProgramming_SubwayRoute--master\SubwayRoute\Debug\SubwayRoute.pdb (Full PDB)

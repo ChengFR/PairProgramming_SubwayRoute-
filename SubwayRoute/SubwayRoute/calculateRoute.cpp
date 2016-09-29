@@ -1,16 +1,12 @@
 #include "calculateRoute.h"
 
 
-void calculateRoute::init(ReadMap r) {
-	rm = r;
-}
-
 
 /*输入：起点与终点
 输出：倒序路线
 功能：求一条最短路线
 */
-vector<string> calculateRoute::getMinStaRoute(string beginSta, string endSta) {
+vector<string> calculateRoute::getMinStaRoute(string &beginSta, string &endSta) {
 	vector<string> route; //站点顺序是倒着的
 	if (beginSta == endSta) {
 		route.push_back(beginSta);
@@ -72,7 +68,7 @@ vector<string> calculateRoute::getMinStaRoute(string beginSta, string endSta) {
 输出：所有最少换乘路线
 功能：计算所有最少换乘路线
 */
-vector<vector<string>> calculateRoute::getAllMinTraRoute(string beginSta, string endSta) {
+vector<vector<string>> calculateRoute::getAllMinTraRoute(string &beginSta, string &endSta) {
 	vector<vector<string>> Routes;//每条路线里只包含几个重要站点
 	vector<vector<string>> completeRoutes; //对之前求得的路线进行填充
 
@@ -218,7 +214,7 @@ vector<vector<string>> calculateRoute::getAllMinTraRoute(string beginSta, string
 输出：最少换乘中路径最短的路线
 功能：计算所有最少换乘路线中路径最短的路线
 */
-vector<string> calculateRoute::getMinStaOfMinTraRoute(vector<vector<string>> routes) {
+vector<string> calculateRoute::getMinStaOfMinTraRoute(vector<vector<string>> &routes) {
 	int i = 0;
 	int min = routes[0].size(), order = 0;
 	int routes_size = routes.size();
@@ -237,7 +233,7 @@ vector<string> calculateRoute::getMinStaOfMinTraRoute(vector<vector<string>> rou
 输出：换乘次数
 功能：计算一条路径的换乘次数
 */
-int calculateRoute::getTranfTime(vector<string> route) {
+int calculateRoute::getTranfTime(vector<string> &route) {
 	int i = 0, j = 0, n = 0;
 	vector<string>::iterator it; //迭代器，是个指针
 	string nowRouteName = "";
@@ -285,7 +281,7 @@ int calculateRoute::getTranfTime(vector<string> route) {
 输出：正序修改后的路线vector<string>
 功能：将路线转正并加换乘信息
 */
-vector<vector<string>> calculateRoute::addTransferInf(vector<string> route) {
+vector<vector<string>> calculateRoute::addTransferInf(vector<string> &route) {
 	vector<string> newRoute1;//无换乘信息
 	vector<string> newRoute2;
 	vector<vector<string>> Route;
@@ -353,7 +349,7 @@ vector<vector<string>> calculateRoute::addTransferInf(vector<string> route) {
 输出：集合中第一个相同的路线名
 功能：获取两个station中相同的路线名
 */
-string calculateRoute::getSameRoute(vector<string> route1, vector<string> route2) {
+string calculateRoute::getSameRoute(vector<string> &route1, vector<string> &route2) {
 	int i = 0;
 	int route_size = route1.size();
 	for (i = 0; i < route_size; i++) {
