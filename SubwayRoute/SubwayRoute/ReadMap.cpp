@@ -175,11 +175,11 @@ bool ReadMap::readPosi() {
 		}
 	}
 	//cout << i << endl;
-	/*for (i = 0; i < stationQueen.size(); i++) {
+	for (i = 0; i < stationQueen.size(); i++) {
 		if (stationQueen[i].x == 0 && stationQueen[i].y == 0) {
 			cout << stationQueen[i].name << endl;
 		}
-	}*/
+	}
 
 	return true;
 }
