@@ -1,2 +1,4 @@
-﻿  SubwayRoute.vcxproj -> E:\PairProgramming_SubwayRoute-\SubwayRoute\Debug\SubwayRoute.exe
+﻿  ReadMap.cpp
+e:\pairprogramming_subwayroute-\subwayroute\subwayroute\readmap.cpp(178): warning C4018: '<': signed/unsigned mismatch
+  SubwayRoute.vcxproj -> E:\PairProgramming_SubwayRoute-\SubwayRoute\Debug\SubwayRoute.exe
   SubwayRoute.vcxproj -> E:\PairProgramming_SubwayRoute-\SubwayRoute\Debug\SubwayRoute.pdb (Full PDB)

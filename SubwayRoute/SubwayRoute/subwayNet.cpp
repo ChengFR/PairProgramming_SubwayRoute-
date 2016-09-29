@@ -1,4 +1,4 @@
-#include "subwayNet.h"
+//#include "subwayNet.h"
 #include <stdio.h>
 #include <tchar.h>
 #include "ReadMap.h"
@@ -13,9 +13,9 @@
 #include <iostream>
 #include <time.h>
 
-subwayNet::subwayNet() {}
-subwayNet::~subwayNet() {}
-string subwayNet::getStations(string line) {}
-string subwayNet::getRouteB(string begin, string end) {}
-string subwayNet::getRouteC(string begin, string end) {}
-void subwayNet::saveData(string data) {}
+//subwayNet::subwayNet() {}
+//subwayNet::~subwayNet() {}
+//string subwayNet::getStations(string line) {}
+//string subwayNet::getRouteB(string begin, string end) {}
+//string subwayNet::getRouteC(string begin, string end) {}
+//void subwayNet::saveData(string data) {}
