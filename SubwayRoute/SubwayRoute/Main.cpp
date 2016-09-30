@@ -11,6 +11,7 @@
 #include <string>
 #include <iostream>
 #include <time.h>
+#include "MyException.h"
 using namespace std;
 
 

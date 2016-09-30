@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="calculateRoute.h" />
+    <ClInclude Include="MyException.h" />
     <ClInclude Include="ReadMap.h" />
     <ClInclude Include="subwayNet.h" />
   </ItemGroup>
