@@ -3,83 +3,81 @@
 
 
 
-void subwayNet::saveData(string &args) {
+void subwayNet::saveData(string &args, Route &route) {
 	ofstream outfile("saveData.txt", ios::app);
 	if (!outfile) {
-		cout << "error in open saveData.txt" << endl;
+		throw FileNotExistException("saveData.txt");
 	}
-	else {
-		outfile << args << endl;
-		int i = 0, j = 0;
-		if (args[0] == '-') {
-			for (i = 0; i < route1.size(); i++) {
-				outfile << route1[i] + " ";
-			}
-			outfile << "" << endl;
-		}
-		else {
-			for (i = 0; i<18; i++) {
-				if (_map.r[i].routeName == args) {
-					//cout<< name<<endl;
-					for (j = 0; j<_map.r[i].stationNumber; j++) {
-						outfile << _map.r[i].stations.at(j) + " ";
-					}
-					break;
-				}
-			}
-			outfile << "" << endl;
-		}
-		outfile.close();
+	outfile << args << endl;
+	int i = 0, j = 0;
+	for (i = 0; i < route.size(); i++) {
+		outfile << route[i] + " ";
 	}
-
+	outfile << "" << endl;
+	outfile.close();
 }
-void subwayNet::getStations(string &line) {
-	string str = "该线路不存在与地图中";
+Route subwayNet::getStations(string &line) {
+	Route route;
 	if (!_map.printRoute(line)) {
-		cout << str << endl;
+		throw LineNotExistException(line);
 	}
-	saveData(line);
+	for (int i = 0; i < 18; i++) {
+		if (_map.r[i].routeName == line) {
+			//cout<< name<<endl;
+			for (int j = 0; j<_map.r[i].stationNumber; j++) {
+				route.push_back( _map.r[i].stations.at(j));
+			}
+			break;
+		}
+	}
+	saveData(line, route);
+	return route;
 }
-bool subwayNet::getRouteB(string &begin, string &end) {
+Route subwayNet::getRouteB(string &begin, string &end) {
+	Route route;
 	bt++;
 	if (!(_map.ifContain_1(_map.stationQueen, begin) >= 0 && _map.ifContain_1(_map.stationQueen, end) >= 0)) {
-		cout << "error args" << endl;
-		return false;
+		throw StationNotExistException();
 	}
-	route = _calRoute.addTransferInf(_calRoute.getMinStaRoute(begin, end));
-	route1 = route[0];
-	route2 = route[1];
+	route = _calRoute.getMinStaRoute(end, begin);
 	string str ="-b" + begin + " " + end;
-	saveData(str);
-	return true;
+	saveData(str, route);
+	return route;
 }
-bool subwayNet::getRouteC(string &begin, string &end) {
+Route subwayNet::getRouteC(string &begin, string &end) {
+	Route route;
 	ct++;
 	if (!(_map.ifContain_1(_map.stationQueen, begin) >= 0 && _map.ifContain_1(_map.stationQueen, end) >= 0)) {
-		cout << "error args" << endl;
-		return false;
+		throw StationNotExistException();
 	}
-	route = _calRoute.addTransferInf(_calRoute.getMinStaOfMinTraRoute(_calRoute.getAllMinTraRoute(begin, end)));
-	route1 = route[0];
-	route2 = route[1];
+	route = _calRoute.getMinStaOfMinTraRoute(_calRoute.getAllMinTraRoute(end, begin));
 
 	string str = "-c" + begin + " " + end;
-	saveData(str);
-	return true;
+	saveData(str, route);
+	return route;
 }
 
-bool subwayNet::getRouteG(string &begin, string &end) {
+Route subwayNet::getRouteG(string &begin, string &end) {
+	Route route;
 	if (bt >= ct) {
-		if (!getRouteB(begin, end)) {
-			return false;
-		}
+		route = getRouteB(begin, end);
 	}
 	else {
-		if (!getRouteC(begin, end)) {
-			return false;
-		}
+		route = getRouteC(begin, end);
 	}
 	string str = "-g" + begin + " " + end;
-	saveData(str);
-	return true;
+	saveData(str, route);
+	return route;
+}
+
+string subwayNet::changeRouteToString(Route & route) {
+	string routeString;
+	Route newRoute = _calRoute.addTransferInf(route);
+	auto begin = newRoute.begin();
+	auto end = newRoute.end();
+	for (; begin != end; begin++) {
+		routeString += *begin;
+		routeString += "\n";
+	}
+	return routeString;
 }

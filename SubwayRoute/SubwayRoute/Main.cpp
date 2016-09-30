@@ -14,7 +14,7 @@
 #include "MyException.h"
 using namespace std;
 
-
+Route route;
 //画图函数
 void drawCNString(const char* str);
 void selectFont(int size, int charset, const char* face);
@@ -70,18 +70,20 @@ int main(int argc, char *argv[]) {
 		if (str == "-b") {
 			cin >> beginSta;
 			cin >> endSta;
-			sn.getRouteB(beginSta, endSta);
+			route = sn.getRouteB(beginSta, endSta);
+			cout << sn.changeRouteToString(route);
 		}
 		else if (str == "-c") {
 			cin >> beginSta;
 			cin >> endSta;
-			sn.getRouteC(beginSta, endSta);
+			route = sn.getRouteC(beginSta, endSta);
+			cout << sn.changeRouteToString(route);
 		}
 		else if (str == "-g") {
 			cin >> beginSta;
 			cin >> endSta;
 			//通过偏好计算出用哪种方式
-			sn.getRouteG(beginSta, endSta);		
+			route = sn.getRouteG(beginSta, endSta);		
 			CreateThread(NULL, 0, draw, NULL, 0, &dwThread);
 		}
 		else {
@@ -203,10 +205,10 @@ void animation() {
 	glColor3f(1.0f, 0.0f, 0.0f);
 	glLineWidth(3.0f);
 	for (i = 0; i < step; i++) {
-		x0 = sn._map.getStation(sn.route1[i]).x / 26.0f;
-		y0 = sn._map.getStation(sn.route1[i]).y / 26.0f;
-		x1 = sn._map.getStation(sn.route1[i+1]).x / 26.0f;
-		y1 = sn._map.getStation(sn.route1[i+1]).y / 26.0f;
+		x0 = sn._map.getStation(route[i]).x / 26.0f;
+		y0 = sn._map.getStation(route[i]).y / 26.0f;
+		x1 = sn._map.getStation(route[i+1]).x / 26.0f;
+		y1 = sn._map.getStation(route[i+1]).y / 26.0f;
 		glBegin(GL_LINES);
 		glVertex2f(x0, y0);
 		glVertex2f(x1, y1);
@@ -215,8 +217,8 @@ void animation() {
 
 	//走过的站点 黄色
 	for (i = 0; i < step; i++) {
-		x = sn._map.getStation(sn.route1[i]).x / 26.0f;
-		y = sn._map.getStation(sn.route1[i]).y / 26.0f;
+		x = sn._map.getStation(route[i]).x / 26.0f;
+		y = sn._map.getStation(route[i]).y / 26.0f;
 		glColor3f(1.0f, 1.0f, 0.0f);
 		glBegin(GL_POLYGON);
 		for (j = 0; j<n; j++)
@@ -225,8 +227,8 @@ void animation() {
 	}
 
 	//当前站点 浅绿色
-	x = sn._map.getStation(sn.route1[step]).x / 26.0f;
-	y = sn._map.getStation(sn.route1[step]).y / 26.0f;
+	x = sn._map.getStation(route[step]).x / 26.0f;
+	y = sn._map.getStation(route[step]).y / 26.0f;
 	glColor3f(0.0f, 1.0f, 0.0f);
 	glBegin(GL_POLYGON);
 	for (j = 0; j<n; j++)
@@ -240,7 +242,7 @@ void animation() {
 //设置刷新频率频率
 void OnTimer(int value)
 {
-	if (step < sn.route1.size() - 1) {
+	if (step < route.size() - 1) {
 		step++;
 		glutPostRedisplay();
 		glutTimerFunc(1000, OnTimer, 1);
