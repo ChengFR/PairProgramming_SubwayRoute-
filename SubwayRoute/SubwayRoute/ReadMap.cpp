@@ -2,15 +2,9 @@
 
 void ReadMap::init() {
 	cout << "read map ..." << endl;
-	if (!readFile()) {
-		cout << "map is wrong !" << endl;
-	}
-	if (!setInf()) {
-		cout << "map is wrong !" << endl;
-	}
-	if (!readPosi()) {
-		cout << "map is wrong !" << endl;
-	}
+	readFile();
+	setInf();
+	readPosi();
 	cout << "finished" << endl;
 }
 bool ReadMap::readFile() {
@@ -21,8 +15,7 @@ bool ReadMap::readFile() {
 	for (; getline(mapFile, str);) {
 		if (str == "") {
 			if (routeOrder >17) {
-				cout << "地铁线路文件错误" << endl;
-				return false;
+				throw MapPatterException();
 			}
 			r[routeOrder].stationNumber = stationNumber;
 			routeOrder++;
@@ -180,7 +173,7 @@ bool ReadMap::readPosi() {
 		data = split(str," ");
 		staIndex = getStationIndex(data[0]);
 		if (staIndex == -1) {
-			cout << data[0] + " is not in map" << endl;
+			cout << data[0] + " is not in map" << endl;//???
 		}
 		else {
 			stationQueen[staIndex].x = atoi(data[1].c_str());

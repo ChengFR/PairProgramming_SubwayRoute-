@@ -4,6 +4,7 @@
 #include<iostream>
 #include<fstream>
 #include <string>
+#include "MyException.h"
 using namespace std;
 
 //站点的信息

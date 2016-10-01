@@ -29,8 +29,7 @@ vector<string> calculateRoute::getMinStaRoute(string &beginSta, string &endSta) 
 		for (i = 0; i<nowStations_size; i++) {
 			sta = rm.getStation(nowStations.at(i));
 			if (sta.nearbyStationNumber == 0) {
-				cout << "error" << endl;
-				return route;
+				throw RouteSearchException();
 			}
 			for (j = 0; j<sta.nearbyStationNumber; j++) {
 				tempStr = sta.nearbyStations.at(j);
@@ -281,8 +280,7 @@ int calculateRoute::getTranfTime(vector<string> &route) {
 输出：正序修改后的路线vector<string>
 功能：将路线转正并加换乘信息
 */
-vector<vector<string>> calculateRoute::addTransferInf(vector<string> &route) {
-	vector<string> newRoute1;//无换乘信息
+vector<string> calculateRoute::addTransferInf(vector<string> &route) {
 	vector<string> newRoute2;
 	vector<vector<string>> Route;
 	int i = 0, j = 0;
@@ -292,8 +290,7 @@ vector<vector<string>> calculateRoute::addTransferInf(vector<string> &route) {
 	station nowStation;
 	station nextStation;
 	station lastStation;
-	for (i = route.size() - 1; i >= 0; i--) {
-		newRoute1.push_back(route.at(i));
+	for (i = 0; i < route.size(); i++) {
 		newRoute2.push_back(route.at(i));
 	}
 	//先求出当前路线名
@@ -337,12 +334,8 @@ vector<vector<string>> calculateRoute::addTransferInf(vector<string> &route) {
 	}
 	cout << newRoute2.size() << endl;
 	int route_size = newRoute2.size();
-	for (i = 0; i < route_size; i++) {
-		cout << newRoute2.at(i) << endl;
-	}
-	Route.push_back(newRoute1);
 	Route.push_back(newRoute2);
-	return Route;
+	return newRoute2;
 }
 
 /*输入：两个station的route集合
