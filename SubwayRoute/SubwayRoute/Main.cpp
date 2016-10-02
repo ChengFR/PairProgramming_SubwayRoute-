@@ -84,6 +84,7 @@ int main(int argc, char *argv[]) {
 			cin >> endSta;
 			//通过偏好计算出用哪种方式
 			route = sn.getRouteG(beginSta, endSta);		
+			cout << sn.changeRouteToString(route);
 			CreateThread(NULL, 0, draw, NULL, 0, &dwThread);
 		}
 		else {
@@ -143,7 +144,7 @@ void display() {
 			glEnd();
 		}
 		//写站点名
-		selectFont(10, DEFAULT_CHARSET, "华文仿宋");
+		selectFont(13, GB2312_CHARSET, "楷体_GB2312");
 		glColor3f(0.0f, 0.0f, 0.0f);
 		glRasterPos2f(x, y);
 		const char *name = sn._map.stationQueen[i].name.c_str();
@@ -234,6 +235,24 @@ void animation() {
 	for (j = 0; j<n; j++)
 		glVertex2f(x + R*cos(2 * Pi / n*j), y + R*sin(2 * Pi / n*j));
 	glEnd();
+	string str;
+	//写站点名
+	selectFont(20, DEFAULT_CHARSET, "华文仿宋");
+	glColor3f(0.0f, 0.0f, 0.0f);
+	glRasterPos2f(-1.0f, 24/25.0f);
+	str = "路线如下：";
+	const char *name = str.c_str();
+	drawCNString(name);
+	for (i = 0; i <= step; i++) {
+		x = -1.0f;
+		y = (23-i) / 25.0f;
+		selectFont(20, DEFAULT_CHARSET, "华文仿宋");
+		glColor3f(0.0f, 0.0f, 0.0f);
+		glRasterPos2f(x, y);
+		str = sn._map.getStation(route[i]).name;
+		const char *name = str.c_str();
+		drawCNString(name);
+	}
 
 	glFlush();
 	glutSwapBuffers();

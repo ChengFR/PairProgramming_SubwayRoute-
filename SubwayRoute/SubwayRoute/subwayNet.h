@@ -18,7 +18,7 @@ typedef vector<string> Route;
 
 class subwayNet {
 private:
-	calculateRoute _calRoute;
+	
 	//Route route;
 	int bt = 0; //-b的次数
 	int ct = 0; //-c的次数
@@ -26,6 +26,7 @@ private:
 	
 public:
 	ReadMap _map;
+	calculateRoute _calRoute;
 	//vector<string> route1;     //通过计算得到的路线,不带换乘信息
 	//vector<string> route2;     //通过计算得到的路线,带换乘信息
 	subwayNet() {

@@ -75,6 +75,9 @@ string subwayNet::changeRouteToString(Route & route) {
 	Route newRoute = _calRoute.addTransferInf(route);
 	auto begin = newRoute.begin();
 	auto end = newRoute.end();
+	int size = newRoute.size();
+	routeString += to_string(size);
+	routeString += "\n";
 	for (; begin != end; begin++) {
 		routeString += *begin;
 		routeString += "\n";
