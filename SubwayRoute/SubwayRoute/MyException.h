@@ -45,3 +45,10 @@ public:
 		std::cerr << "ÊäÈë¸ñÊ½´íÎó" << std::endl;
 	}
 };
+
+class RouteSearchException {
+public:
+	RouteSearchException(){
+		std::cerr << "Ñ°Â·´íÎó" << std::endl;
+	}
+};
