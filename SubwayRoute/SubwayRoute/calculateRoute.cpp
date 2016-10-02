@@ -71,6 +71,12 @@ vector<vector<string>> calculateRoute::getAllMinTraRoute(string &beginSta, strin
 	vector<vector<string>> Routes;//每条路线里只包含几个重要站点
 	vector<vector<string>> completeRoutes; //对之前求得的路线进行填充
 
+	if (beginSta == endSta) {
+		vector<string> route;
+		route.push_back(beginSta);
+		completeRoutes.push_back(route);
+		return completeRoutes;
+	}
 										   //用于遍历
 	station nowStation;
 	route nowRoute;
@@ -282,7 +288,7 @@ int calculateRoute::getTranfTime(vector<string> &route) {
 */
 vector<string> calculateRoute::addTransferInf(vector<string> &route) {
 	vector<string> newRoute2;
-	vector<vector<string>> Route;
+	//vector<vector<string>> Route;
 	int i = 0, j = 0;
 	vector<string>::iterator it; //迭代器，是个指针
 	string temp = "";
@@ -290,6 +296,9 @@ vector<string> calculateRoute::addTransferInf(vector<string> &route) {
 	station nowStation;
 	station nextStation;
 	station lastStation;
+	if (route.size() == 1) {
+		return route;
+	}
 	for (i = 0; i < route.size(); i++) {
 		newRoute2.push_back(route.at(i));
 	}
@@ -332,9 +341,9 @@ vector<string> calculateRoute::addTransferInf(vector<string> &route) {
 			it = newRoute2.begin() + i;
 		}
 	}
-	cout << newRoute2.size() << endl;
-	int route_size = newRoute2.size();
-	Route.push_back(newRoute2);
+	//cout << newRoute2.size() << endl;
+	//int route_size = newRoute2.size();
+	//Route.push_back(newRoute2);
 	return newRoute2;
 }
 

@@ -1,10 +1,4 @@
 ﻿  subwayNet.cpp
-e:\pairprogramming_subwayroute-\subwayroute\subwayroute\subwaynet.cpp(14): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Compiling...
-  Main.cpp
-e:\pairprogramming_subwayroute-\subwayroute\subwayroute\main.cpp(128): warning C4018: '<': signed/unsigned mismatch
-e:\pairprogramming_subwayroute-\subwayroute\subwayroute\main.cpp(245): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  SubwayRoute.vcxproj -> E:\PairProgramming_SubwayRoute-\SubwayRoute\Debug\SubwayRoute.exe
-  SubwayRoute.vcxproj -> E:\PairProgramming_SubwayRoute-\SubwayRoute\Debug\SubwayRoute.pdb (Full PDB)
+g:\软工\结对项目\pairprogramming_subwayroute--newversion\subwayroute\subwayroute\subwaynet.cpp(13): warning C4018: “<”: 有符号/无符号不匹配
+  SubwayRoute.vcxproj -> G:\软工\结对项目\PairProgramming_SubwayRoute--NewVersion\SubwayRoute\Debug\SubwayRoute.exe
+  SubwayRoute.vcxproj -> G:\软工\结对项目\PairProgramming_SubwayRoute--NewVersion\SubwayRoute\Debug\SubwayRoute.pdb (Full PDB)
