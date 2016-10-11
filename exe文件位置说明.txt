@@ -1,0 +1,2 @@
+1. SubwayRoute.exe在 PairProgramming_SubwayRoute-\SubwayRoute\Debug中。
+2. 因为SubwayRoute.exe的启动需要特定的.dll文件以及一些文件的读取采用的是相对路径，所以不适合移动.exe文件的位置。
